@@ -77,6 +77,10 @@ python manage.py runserver
 
 - **About Page**  
   ![About](screenshots/about.png)
+  
+- **Contact Page**  
+  ![Contact](screenshots/contact.png)
+
 
 ### 🔑 Authentication
 - **Registration**  
@@ -94,6 +98,9 @@ python manage.py runserver
 
 - **Create Donation**  
   ![Create Donation](screenshots/create.png)
+  
+- **Donor Profile**  
+  ![Donor Profile](screenshots/dprofile.png)
 
 ### 👥 Receiver Views
 - **Receiver Dashboard**  
@@ -105,10 +112,6 @@ python manage.py runserver
 - **Receiver Profile**  
   ![Receiver Profile](screenshots/rprofile.png)
 
-### ℹ️ Additional
-- **Contact Page**  
-  ![Contact](screenshots/contact.png)
 
-- **Donor Profile**  
-  ![Donor Profile](screenshots/dprofile.png)
+
 
