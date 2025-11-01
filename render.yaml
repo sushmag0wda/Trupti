@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: trupti-food-waste
+    env: python
+    buildCommand: "pip install -r requirements.txt && python manage.py migrate"
+    startCommand: "gunicorn food_management.wsgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: DJANGO_SETTINGS_MODULE
+        value: food_management.settings
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
+      - key: DISABLE_COLLECTSTATIC
+        value: 1
+    plan: free
+    region: singapore  # or choose a region closer to your users
