@@ -1,9 +1,12 @@
 services:
   - type: web
-    name: trupti-food-waste
+    name: trupti
     env: python
-    buildCommand: "pip install -r requirements.txt && python manage.py migrate"
-    startCommand: "gunicorn food_management.wsgi:application"
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
+      python manage.py migrate
+    startCommand: gunicorn food_management.wsgi:application
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
@@ -11,9 +14,11 @@ services:
         value: food_management.settings
       - key: SECRET_KEY
         generateValue: true
-      - key: WEB_CONCURRENCY
-        value: 4
+      - key: DEBUG
+        value: "False"
       - key: DISABLE_COLLECTSTATIC
-        value: 1
+        value: "0"
+      - key: ALLOWED_HOSTS
+        value: "trupti.onrender.com"
     plan: free
-    region: singapore  # or choose a region closer to your users
+    region: singapore
