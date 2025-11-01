@@ -69,69 +69,46 @@ python manage.py runserver
 ## 📸 Screenshots
 
 ### 🏠 Landing & Auth
-| Splash Screen | Home Page | About |
-|--------------|-----------|-------|
-| ![Splash](screenshots/splash.png) | ![Home](screenshots/home.png) | ![About](screenshots/about.png) |
+- **Splash Screen**  
+  ![Splash](screenshots/splash.png)
+
+- **Home Page**  
+  ![Home](screenshots/home.png)
+
+- **About Page**  
+  ![About](screenshots/about.png)
 
 ### 🔑 Authentication
-| Register | Login |
-|----------|--------|
-| ![Register](screenshots/register.png) | ![Login](screenshots/login.png) |
+- **Registration**  
+  ![Register](screenshots/register.png)
+
+- **Login**  
+  ![Login](screenshots/login.png)
 
 ### 👨‍🍳 Donor Views
-| Dashboard | My Donations | Create |
-|-----------|--------------|---------|
-| ![Donor Dashboard](screenshots/ddashboard.png) | ![My Donations](screenshots/ddonations.png) | ![Create Donation](screenshots/create.png) |
+- **Donor Dashboard**  
+  ![Donor Dashboard](screenshots/ddashboard.png)
+
+- **My Donations**  
+  ![My Donations](screenshots/ddonations.png)
+
+- **Create Donation**  
+  ![Create Donation](screenshots/create.png)
 
 ### 👥 Receiver Views
-| Dashboard | Browse | Profile |
-|-----------|---------|----------|
-| ![Receiver Dashboard](screenshots/rdashboard.png) | ![Browse Donations](screenshots/rdonations.png) | ![Receiver Profile](screenshots/rprofile.png) |
+- **Receiver Dashboard**  
+  ![Receiver Dashboard](screenshots/rdashboard.png)
+
+- **Browse Donations**  
+  ![Browse Donations](screenshots/rdonations.png)
+
+- **Receiver Profile**  
+  ![Receiver Profile](screenshots/rprofile.png)
 
 ### ℹ️ Additional
-| Contact | Donor Profile |
-|---------|----------------|
-| ![Contact](screenshots/contact.png) | ![Donor Profile](screenshots/dprofile.png) |
+- **Contact Page**  
+  ![Contact](screenshots/contact.png)
 
+- **Donor Profile**  
+  ![Donor Profile](screenshots/dprofile.png)
 
----
-
-## 📝 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-- Built with ❤️ using Django and Bootstrap 5
-- Icons by [Bootstrap Icons](https://icons.getbootstrap.com/)
-- Inspired by the mission to reduce food waste and fight hunger
-python manage.py migrate
-python manage.py createsuperuser  # optional for admin access
-python manage.py runserver
-```
-
-Visit http://127.0.0.1:8000/ to access the site.
-
-### Demo Data
-
-Use the Django admin panel at http://127.0.0.1:8000/admin/ to add sample donations or requests.
-
-## Project Structure
-
-- `core/` – App containing models, views, forms, URLs
-- `templates/` – HTML templates for pages and dashboards
-- `static/` – CSS and JavaScript assets
-- `food_management/` – Project settings and URL routing
-- `manage.py` – Django command-line interface
-
-## Environment Variables
-
-Default settings are suitable for local development. Update `SECRET_KEY` and `ALLOWED_HOSTS` in production.
-
-## Future Enhancements
-
-- Email notifications for accepted/rejected requests
-- Map integration for nearby donors
-- Scheduled tasks to auto-expire donations
-
-## License
-
-MIT License
