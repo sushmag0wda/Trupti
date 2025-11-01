@@ -68,17 +68,31 @@ python manage.py runserver
 
 ## 📸 Screenshots
 
-### **Donor Views**
-![Donor Dashboard](screenshots/donor-dashboard.png)
-![Create Donation](screenshots/create-donation.png)
+### 🏠 Landing & Auth
+| Splash Screen | Home Page | About |
+|--------------|-----------|-------|
+| ![Splash](screenshots/splash.png) | ![Home](screenshots/home.png) | ![About](screenshots/about.png) |
 
-### **Receiver Views**
-![Browse Donations](screenshots/browse-donations.png)
-![Request Food](screenshots/request-food.png)
+### 🔑 Authentication
+| Register | Login |
+|----------|--------|
+| ![Register](screenshots/register.png) | ![Login](screenshots/login.png) |
 
-### **Admin Panel**
-![Admin Dashboard](screenshots/admin-dashboard.png)
-![Manage Users](screenshots/manage-users.png)
+### 👨‍🍳 Donor Views
+| Dashboard | My Donations | Create |
+|-----------|--------------|---------|
+| ![Donor Dashboard](screenshots/ddashboard.png) | ![My Donations](screenshots/ddonations.png) | ![Create Donation](screenshots/create.png) |
+
+### 👥 Receiver Views
+| Dashboard | Browse | Profile |
+|-----------|---------|----------|
+| ![Receiver Dashboard](screenshots/rdashboard.png) | ![Browse Donations](screenshots/rdonations.png) | ![Receiver Profile](screenshots/rprofile.png) |
+
+### ℹ️ Additional
+| Contact | Donor Profile |
+|---------|----------------|
+| ![Contact](screenshots/contact.png) | ![Donor Profile](screenshots/dprofile.png) |
+
 
 ---
 
