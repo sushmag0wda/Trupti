@@ -4,8 +4,9 @@ services:
     env: python
     buildCommand: |
       pip install -r requirements.txt
+      mkdir -p static
+      python manage.py collectstatic --noinput --clear
     startCommand: gunicorn food_management.wsgi:application
-    postDeployCommand: ./post_deploy.sh
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
