@@ -91,10 +91,13 @@ STATICFILES_DIRS = [
 # Create staticfiles directory if it doesn't exist
 os.makedirs(STATIC_ROOT, exist_ok=True)
 
+# Simplified static file serving with WhiteNoise
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
 # Add WhiteNoise to MIDDLEWARE
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Keep this near the top
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -103,8 +106,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# Simplified static file serving with WhiteNoise
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# WhiteNoise configuration
+WHITENOISE_USE_FINDERS = True
+WHITENOISE_MANIFEST_STRICT = False
+WHITENOISE_ALLOW_ALL_ORIGINS = True
 
 # Media files
 MEDIA_URL = '/media/'
