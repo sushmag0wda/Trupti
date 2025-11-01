@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %}Trupti | Feeding hunger, fulfilling hearts.{% endblock %}
+{% block content %}
+  <section class="hero-section mb-5">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-6">
+        <h1 class="hero-title">Together we nourish every heart.</h1>
+        <p class="hero-tagline">
+          Trupti empowers donors and receivers to transform surplus meals into smiles. Join a curated network of
+          restaurants, homes, and NGOs working in harmony.
+        </p>
+        <div class="d-flex flex-wrap gap-3">
+          {% if user.is_authenticated %}
+            <a class="btn-trupti" href="{% url 'dashboard' %}">Go to your dashboard</a>
+            <a class="btn-trupti-outline" href="{% url 'donation_list' %}">Explore donations</a>
+          {% else %}
+            <a class="btn-trupti" href="{% url 'register' %}">Become part of Trupti</a>
+            <a class="btn-trupti-outline" href="{% url 'login' %}">I already have an account</a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="row g-3">
+          <div class="col-6">
+            <div class="metric-card h-100">
+              <h3>Purpose-built</h3>
+              <p class="mb-0">Donor &amp; receiver dashboards tuned for effortless coordination.</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="metric-card h-100">
+              <h3>Real-time</h3>
+              <p class="mb-0">Track every request, acceptance, and delivery as it happens.</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="metric-card h-100">
+              <h3>Community-first</h3>
+              <p class="mb-0">Match nearby NGOs with ready-to-serve wholesome meals.</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="metric-card h-100">
+              <h3>Impact-driven</h3>
+              <p class="mb-0">Visualize donations saved from waste through elegant reports.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% if user.is_authenticated %}
+    <section class="mb-5">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="section-heading mb-0">Latest contributions</h2>
+        <a class="pill-link" href="{% url 'donation_list' %}">View all donations</a>
+      </div>
+      <div class="row g-4">
+        {% if latest_donations %}
+          {% for donation in latest_donations %}
+            <div class="col-md-4">
+              <div class="card-trupti h-100">
+                <div class="card-body">
+                  <h5 class="fw-semibold text-capitalize">{{ donation.food_name }}</h5>
+                  <p class="text-muted">{{ donation.description|truncatechars:120 }}</p>
+                  <div class="d-flex flex-column gap-2 small text-muted">
+                    <span><strong>Quantity:</strong> {{ donation.quantity }}</span>
+                    <span><strong>Location:</strong> {{ donation.address }}</span>
+                    <span>Available till {{ donation.available_till|date:"M d, Y H:i" }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <div class="col-12">
+            <div class="alert alert-trupti alert-info">No donations available right now. Check back soon!</div>
+          </div>
+        {% endif %}
+      </div>
+    </section>
+  {% endif %}
+{% endblock %}

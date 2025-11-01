@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load core_extras %}
+{% block title %}Join Trupti{% endblock %}
+{% block content %}
+  <div class="row g-4 justify-content-center align-items-start">
+    <div class="col-lg-6">
+      <div class="auth-card">
+        <h1 class="h3 text-center mb-3">Create your Trupti profile</h1>
+        <p class="text-center text-muted mb-4">
+          Whether you are sharing meals or requesting them, a single account unlocks tailored tools for your role.
+        </p>
+        <form method="post" novalidate>
+          {% csrf_token %}
+          {% if form.non_field_errors %}
+            <div class="alert alert-trupti alert-danger">
+              {{ form.non_field_errors|join:"<br>"|safe }}
+            </div>
+          {% endif %}
+          <div class="row g-3">
+            {% for field in form %}
+              <div class="{% if field.name == 'address' %}col-12{% else %}col-md-6{% endif %} field-wrapper" {% if field.errors %}data-has-error="true"{% endif %}>
+                <div class="d-flex align-items-center justify-content-between mb-1">
+                  <label class="form-label mb-0" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                  {% if field.help_text %}
+                    <button
+                      type="button"
+                      class="info-tooltip-btn"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="{{ field.help_text|striptags }}"
+                    >
+                      i
+                    </button>
+                  {% endif %}
+                </div>
+                {% if field.errors %}
+                  {{ field|add_class:"form-control field-input is-invalid" }}
+                {% else %}
+                  {{ field|add_class:"form-control field-input" }}
+                {% endif %}
+                {% if field.errors %}
+                  <div class="text-danger small mt-1">{{ field.errors|join:"<br>"|safe }}</div>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+          <button class="btn-trupti w-100 mt-4" type="submit">Create account</button>
+        </form>
+        <p class="mt-3 mb-0 text-center">
+          Already part of Trupti? <a href="{% url 'login' %}">Sign in</a>.
+        </p>
+      </div>
+    </div>
+    <div class="col-lg-5">
+      <div class="card-trupti p-4">
+        <h2 class="h5 fw-semibold mb-3 text-center">Choose your purpose</h2>
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <div class="metric-card h-100">
+              <h3 class="h6 text-uppercase">Donor</h3>
+              <p class="small mb-0">List surplus meals, manage requests, and mark handovers instantly.</p>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="metric-card h-100">
+              <h3 class="h6 text-uppercase">Receiver</h3>
+              <p class="small mb-0">Discover nearby food, request what you need, and track approvals.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block extra_js %}
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+      tooltipTriggerList.forEach((tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl));
+
+      const firstError = document.querySelector(".field-wrapper[data-has-error='true']");
+      if (firstError) {
+        firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+        const input = firstError.querySelector(".field-input");
+        if (input) {
+          requestAnimationFrame(() => input.focus({ preventScroll: true }));
+        }
+      }
+    });
+  </script>
+{% endblock %}
