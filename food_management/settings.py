@@ -13,6 +13,24 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-replace-me')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
+# Security settings
+if not DEBUG:
+    # Set to True to avoid transmitting session cookies over HTTP accidentally
+    SESSION_COOKIE_SECURE = True
+    # Set to True to avoid transmitting CSRF cookies over HTTP accidentally
+    CSRF_COOKIE_SECURE = True
+    # Set to True to force HTTPS
+    SECURE_SSL_REDIRECT = True
+    # Enable HTTP Strict Transport Security (HSTS)
+    SECURE_HSTS_SECONDS = 31536000  # 1 year
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    # Additional security settings
+    SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    X_FRAME_OPTIONS = 'DENY'
+
 # Add your Render.com URL to ALLOWED_HOSTS
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 ALLOWED_HOSTS = []
