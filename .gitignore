@@ -49,28 +49,6 @@ ENV/
 *.sqlite3
 *.sql
 
-# Vercel
-.vercel/
-.vercel_build.log
-.vercel_builds/
-
-# Node modules (if any)
-node_modules/
-
-# Logs
-logs/
-*.log
-
-# Local development
-*.bak
-*~
-
-# Project specific
-docs/
-tests/
-.coverage
-htmlcov/
-
 # Media and static files
 /media/
 /static/
