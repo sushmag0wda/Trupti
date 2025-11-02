@@ -1,14 +1,28 @@
+import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = "django-insecure-replace-me"
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-replace-me')
 
-import os
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-DEBUG = os.environ.get('DEBUG', 'True') == 'True'
+# Add your Render.com URL to ALLOWED_HOSTS
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+ALLOWED_HOSTS = []
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+else:
+    ALLOWED_HOSTS.extend(['localhost', '127.0.0.1'])
 
-ALLOWED_HOSTS = ['*']  # For production, replace with your domain
+# Add your production domain here when you have one
+# ALLOWED_HOSTS.extend(['yourdomain.com', 'www.yourdomain.com'])
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
@@ -17,8 +31,14 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
+# Ensure the staticfiles directory exists
+os.makedirs(STATIC_ROOT, exist_ok=True)
+
 # Simplified static file serving for production with WhiteNoise
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+WHITENOISE_USE_FINDERS = True
+WHITENOISE_MANIFEST_STRICT = False
+WHITENOISE_ALLOW_ALL_ORIGINS = True
 
 # Media files (user-uploaded content)
 MEDIA_URL = '/media/'
