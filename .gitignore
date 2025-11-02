@@ -56,3 +56,5 @@ ENV/
 # Logs
 logs/
 *.log
+
+.vercel
