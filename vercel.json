@@ -17,6 +17,10 @@
     {
       "src": "staticfiles/",
       "use": "@vercel/static"
+    },
+    {
+      "src": "media/",
+      "use": "@vercel/static"
     }
   ],
   "routes": [

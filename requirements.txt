@@ -1,10 +1,23 @@
+# Core Django
 Django>=4.2,<5.0
-django-crispy-forms==1.14.0
-Pillow>=10.0.0
-django-allauth>=0.54.0
-python-dotenv>=1.0.0
-whitenoise>=6.4.0
 gunicorn>=20.1.0
+whitenoise>=6.4.0
+
+# Database
 psycopg2-binary>=2.9.6
+dj-database-url>=0.5.0
+
+# Environment
+python-dotenv>=1.0.0
 django-environ>=0.10.0
+
+# Django Packages
+django-crispy-forms>=1.14.0
+django-allauth>=0.54.0
 django-widget-tweaks>=1.5.0
+
+# Media Handling
+Pillow>=10.0.0
+
+# Production
+python-multipart>=0.0.5
